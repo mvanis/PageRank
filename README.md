@@ -5,11 +5,12 @@ Try running it on small_now (to see how it works quickly), or adding more comman
 
 For example;
 
-
-pagerank.py --data=./lawfareblog.csv.gz --filter_ratio=0.2 --personalization_vector_query='corona' --search_query='-corona'
+```
+$ pagerank.py --data=./lawfareblog.csv.gz --filter_ratio=0.2 --personalization_vector_query='corona' --search_query='-corona'
+```
 returns:
 
-
+```
 rank=0 pagerank=8.8870e-01 url=www.lawfareblog.com/covid-19-speech-and-surveillance-response
 rank=1 pagerank=8.8867e-01 url=www.lawfareblog.com/lawfare-live-covid-19-speech-and-surveillance
 rank=2 pagerank=1.8256e-01 url=www.lawfareblog.com/chinatalk-how-party-takes-its-propaganda-global
@@ -19,9 +20,9 @@ rank=6 pagerank=7.5307e-02 url=www.lawfareblog.com/limits-world-health-organizat
 rank=7 pagerank=6.8115e-02 url=www.lawfareblog.com/chinatalk-dispatches-shanghai-beijing-i-beijing-and-hong-kong
 rank=8 pagerank=6.4847e-02 url=www.lawfareblog.com/us-moves-dismiss-case-against-company-t-company-linked-ira-troll-farm
 rank=9 pagerank=6.4847e-02 url=www.lawfareblog.com/livestream-house-armed-services-holds-ces-holds-hearing-national-security-challenges-north-and-south-america
-
+```
 Here are all the tasks I have had this program run so far: 
-
+```
 pagerank.py --data=./small_now.csv.gz --verbose
 
 computing indices
@@ -33,7 +34,9 @@ rank=2 pagerank=1.2402e+00 url=5
 rank=3 pagerank=4.5712e-01 url=2
 rank=4 pagerank=3.5620e-01 url=3
 rank=5 pagerank=3.2078e-01 url=1
+```
 
+```
 pagerank.py --data=./lawfareblog.csv.gz --search_query='corona'
 
 rank=0 pagerank=4.5861e-03 url=www.lawfareblog.com/lawfare-podcast-united-nations-and-coronavirus-crisis
@@ -46,7 +49,8 @@ rank=6 pagerank=2.2727e-03 url=www.lawfareblog.com/livestream-house-oversight-co
 rank=7 pagerank=2.2520e-03 url=www.lawfareblog.com/congressional-homeland-security-committees-seek-ways-support-state-federal-responses-coronavirus
 rank=8 pagerank=2.1878e-03 url=www.lawfareblog.com/paper-hearing-experts-debate-digital-contact-tracing-and-coronavirus-privacy-concerns
 rank=9 pagerank=2.0339e-03 url=www.lawfareblog.com/cyberlaw-podcast-how-israel-fighting-coronavirus
-
+```
+```
 pagerank.py --data=./lawfareblog.csv.gz --search_query='trump'
 
 rank=0 pagerank=6.6243e-02 url=www.lawfareblog.com/donald-trump-and-politically-weaponized-executive-branch
@@ -59,7 +63,9 @@ rank=6 pagerank=2.5252e-02 url=www.lawfareblog.com/why-trump-cant-buy-greenland
 rank=7 pagerank=2.2457e-02 url=www.lawfareblog.com/oral-argument-summary-qassim-v-trump
 rank=8 pagerank=2.1462e-02 url=www.lawfareblog.com/dc-circuit-court-denies-trump-rehearing-mazars-case
 rank=9 pagerank=2.1103e-02 url=www.lawfareblog.com/second-circuit-rules-mazars-must-hand-over-trump-tax-returns-new-york-prosecutors
+```
 
+```
 pagerank.py --data=./lawfareblog.csv.gz
 
 rank=0 pagerank=8.4156e+00 url=www.lawfareblog.com/our-comments-policy
@@ -72,8 +78,9 @@ rank=6 pagerank=8.4156e+00 url=www.lawfareblog.com/snowden-revelations
 rank=7 pagerank=8.4156e+00 url=www.lawfareblog.com/about-lawfare-brief-history-term-and-site
 rank=8 pagerank=8.4156e+00 url=www.lawfareblog.com/topics
 rank=9 pagerank=8.4156e+00 url=www.lawfareblog.com/documents-related-mueller-investigation
+```
 
-
+```
 pagerank.py --data=./lawfareblog.csv.gz --verbose --filter_ratio=0.2
 
 rank=0 pagerank=4.6091e+00 url=www.lawfareblog.com/trump-asks-supreme-court-stay-congressional-subpeona-tax-returns
@@ -86,7 +93,8 @@ rank=6 pagerank=1.8693e+00 url=www.lawfareblog.com/whats-house-resolution-impeac
 rank=7 pagerank=1.7655e+00 url=www.lawfareblog.com/congress-us-policy-toward-syria-and-turkey-overview-recent-hearings
 rank=8 pagerank=1.6807e+00 url=www.lawfareblog.com/summary-david-holmess-deposition-testimony
 rank=9 pagerank=9.8346e-01 url=www.lawfareblog.com/events
-
+```
+```
 pagerank.py --data=./lawfareblog.csv.gz --verbose --filter_ratio=0.2 --alpha=0.99999
 
 
@@ -100,7 +108,8 @@ rank=6 pagerank=1.1867e+00 url=www.lawfareblog.com/water-wars-drill-maybe-drill
 rank=7 pagerank=1.1867e+00 url=www.lawfareblog.com/water-wars-disjointed-operations-south-china-sea
 rank=8 pagerank=1.1867e+00 url=www.lawfareblog.com/water-wars-us-china-divide-shangri-la
 rank=9 pagerank=1.1867e+00 url=www.lawfareblog.com/water-wars-sinking-feeling-philippine-china-relations
-
+```
+```
 pagerank.py --data=./lawfareblog.csv.gz --filter_ratio=0.2 --personalization_vector_query='corona'
 
 rank=0 pagerank=8.8870e-01 url=www.lawfareblog.com/covid-19-speech-and-surveillance-response
@@ -113,4 +122,4 @@ rank=6 pagerank=1.0199e-01 url=www.lawfareblog.com/prosecuting-purposeful-corona
 rank=7 pagerank=1.0199e-01 url=www.lawfareblog.com/britains-coronavirus-response
 rank=8 pagerank=9.4298e-02 url=www.lawfareblog.com/lawfare-podcast-mom-and-dad-talk-clinical-trials-pandemic  
 rank=9 pagerank=8.7207e-02 url=www.lawfareblog.com/house-oversight-committee-holds-day-two-hearing-government-coronavirus-response
-
+```
