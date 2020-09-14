@@ -19,3 +19,60 @@ rank=6 pagerank=7.5307e-02 url=www.lawfareblog.com/limits-world-health-organizat
 rank=7 pagerank=6.8115e-02 url=www.lawfareblog.com/chinatalk-dispatches-shanghai-beijing-i-beijing-and-hong-kong
 rank=8 pagerank=6.4847e-02 url=www.lawfareblog.com/us-moves-dismiss-case-against-company-t-company-linked-ira-troll-farm
 rank=9 pagerank=6.4847e-02 url=www.lawfareblog.com/livestream-house-armed-services-holds-ces-holds-hearing-national-security-challenges-north-and-south-america
+
+Here are all the tasks I have had this program run so far: 
+
+pagerank.py --data=./small_now.csv.gz --verbose
+
+computing indices
+computing values
+found epsilon
+rank=0 pagerank=2.1634e+00 url=4
+rank=1 pagerank=1.6664e+00 url=6
+rank=2 pagerank=1.2402e+00 url=5
+rank=3 pagerank=4.5712e-01 url=2
+rank=4 pagerank=3.5620e-01 url=3
+rank=5 pagerank=3.2078e-01 url=1
+
+pagerank.py --data=./lawfareblog.csv.gz --search_query='corona'
+
+rank=0 pagerank=4.5861e-03 url=www.lawfareblog.com/lawfare-podcast-united-nations-and-coronavirus-crisis
+rank=1 pagerank=4.0460e-03 url=www.lawfareblog.com/house-oversight-committee-holds-day-two-hearing-government-coronavirus-response
+rank=2 pagerank=2.6116e-03 url=www.lawfareblog.com/britains-coronavirus-response
+rank=3 pagerank=2.5390e-03 url=www.lawfareblog.com/prosecuting-purposeful-coronavirus-exposure-terrorism
+rank=4 pagerank=2.3557e-03 url=www.lawfareblog.com/israeli-emergency-regulations-location-tracking-coronavirus-carriers
+rank=5 pagerank=2.2895e-03 url=www.lawfareblog.com/why-congress-conducting-business-usual-face-coronavirus
+rank=6 pagerank=2.2727e-03 url=www.lawfareblog.com/livestream-house-oversight-committee-holds-hearing-government-coronavirus-response
+rank=7 pagerank=2.2520e-03 url=www.lawfareblog.com/congressional-homeland-security-committees-seek-ways-support-state-federal-responses-coronavirus
+rank=8 pagerank=2.1878e-03 url=www.lawfareblog.com/paper-hearing-experts-debate-digital-contact-tracing-and-coronavirus-privacy-concerns
+rank=9 pagerank=2.0339e-03 url=www.lawfareblog.com/cyberlaw-podcast-how-israel-fighting-coronavirus
+
+pagerank.py --data=./lawfareblog.csv.gz --search_query='trump'
+
+rank=0 pagerank=6.6243e-02 url=www.lawfareblog.com/donald-trump-and-politically-weaponized-executive-branch
+rank=1 pagerank=6.0194e-02 url=www.lawfareblog.com/trump-asks-supreme-court-stay-congressional-subpeona-tax-returns
+rank=2 pagerank=3.4969e-02 url=www.lawfareblog.com/trump-administrations-worrying-new-policy-israeli-settlements
+rank=3 pagerank=3.2193e-02 url=www.lawfareblog.com/document-trump-revokes-obama-executive-order-counterterrorism-strike-casualty-reporting
+rank=4 pagerank=3.0971e-02 url=www.lawfareblog.com/dc-circuit-overrules-district-courts-due-process-ruling-qasim-v-trump
+rank=5 pagerank=2.8460e-02 url=www.lawfareblog.com/how-trumps-approach-middle-east-ignores-past-future-and-human-condition
+rank=6 pagerank=2.5252e-02 url=www.lawfareblog.com/why-trump-cant-buy-greenland
+rank=7 pagerank=2.2457e-02 url=www.lawfareblog.com/oral-argument-summary-qassim-v-trump
+rank=8 pagerank=2.1462e-02 url=www.lawfareblog.com/dc-circuit-court-denies-trump-rehearing-mazars-case
+rank=9 pagerank=2.1103e-02 url=www.lawfareblog.com/second-circuit-rules-mazars-must-hand-over-trump-tax-returns-new-york-prosecutors
+
+pagerank.py --data=./lawfareblog.csv.gz
+
+rank=0 pagerank=8.4156e+00 url=www.lawfareblog.com/our-comments-policy
+rank=1 pagerank=8.4156e+00 url=www.lawfareblog.com/lawfare-job-board
+rank=2 pagerank=8.4156e+00 url=www.lawfareblog.com/litigation-documents-resources-related-travel-ban
+rank=3 pagerank=8.4156e+00 url=www.lawfareblog.com/subscribe-lawfare
+rank=4 pagerank=8.4156e+00 url=www.lawfareblog.com/support-lawfare
+rank=5 pagerank=8.4156e+00 url=www.lawfareblog.com/upcoming-events
+rank=6 pagerank=8.4156e+00 url=www.lawfareblog.com/snowden-revelations
+rank=7 pagerank=8.4156e+00 url=www.lawfareblog.com/about-lawfare-brief-history-term-and-site
+rank=8 pagerank=8.4156e+00 url=www.lawfareblog.com/topics
+rank=9 pagerank=8.4156e+00 url=www.lawfareblog.com/documents-related-mueller-investigation
+
+
+
+
