@@ -3,6 +3,16 @@ This code computes PageRank by implementing equation 5.1 found in https://galton
 
 Try running it on small_now (to see how it works quickly), or adding more commands and running it on lawfareblog. 
 
+UPDATE: now we can return urls that are closely related the --search_query. Adjusting some hyperparameters can change the results to focus on the --search_query
+
+Take a look;
+
+
+
+
+Comment out line 188, change line to "url_satisfies_query_notsim(url,query):" and you'll get the results below. 
+
+
 For example;
 
 ```
