@@ -1,19 +1,89 @@
 # PageRank
+
+## This operates as a search engine
+
 This code computes PageRank by implementing equation 5.1 found in https://galton.uchicago.edu/~lekheng/meetings/mathofranking/ref/langville.pdf
 
-Try running it on small_now (to see how it works quickly), or adding more commands and running it on lawfareblog. 
+Give it a try! 
 
-UPDATE: now we can return urls that are closely related the --search_query. Adjusting some hyperparameters can change the results to focus on the --search_query
+UPDATE: now we can return urls that are closely related to the --search_query. Adjusting some hyperparameters can change the results to focus on urls matching the --search_query exactly. 
+
+First I updated the url_satisfies_query funcion to return true for the search query and the 5 words most similar to the search query 
+(according to gensim.downloader.load('glove-twitter-25')) 
+```
+python pagerank.py --data=./lawfareblog.csv.gz --search_query='weapons'
+
+INFO:root:rank=0 pagerank=0.04005281254649162 url=www.lawfareblog.com/why-did-you-wait-moral-emptiness-and-drone-strikes
+INFO:root:rank=1 pagerank=0.024694116786122322 url=www.lawfareblog.com/dc-district-court-dismisses-journalists-drone-lawsuit
+INFO:root:rank=2 pagerank=0.022750990465283394 url=www.lawfareblog.com/revived-cia-drone-strike-program-comments-new-policy
+INFO:root:rank=3 pagerank=0.021692432463169098 url=www.lawfareblog.com/us-court-appeals-dc-circuit-dismisses-suit-over-us-drone-strike
+INFO:root:rank=4 pagerank=0.017879409715533257 url=www.lawfareblog.com/iran-shoots-down-us-drone-domestic-and-international-legal-implications        
+INFO:root:rank=5 pagerank=0.017875775694847107 url=www.lawfareblog.com/german-courts-weigh-legal-responsibility-us-drone-strikes
+INFO:root:rank=6 pagerank=0.011944924481213093 url=www.lawfareblog.com/slaughterbots-and-other-anticipated-autonomous-weapons-problems
+INFO:root:rank=7 pagerank=0.00916246697306633 url=www.lawfareblog.com/faa-wants-hear-you-about-privacy-and-domestic-drones
+INFO:root:rank=8 pagerank=0.008907114155590534 url=www.lawfareblog.com/very-low-tech-drone-smackdown
+INFO:root:rank=9 pagerank=0.008891156874597073 url=www.lawfareblog.com/ryan-calo-faas-setback-domestic-drones
+```
+Since the pagerank for urls containing drones is much higher than urls containing weapons, there are alot of results for drones. 
+
+This is how similarity is defined: 
+
+```
+>>> import gensim.downloader
+>>> vectors = gensim.downloader.load('glove-twitter-25')
+
+>>> vectors.most_similar('weapons')
+[('drones', 0.8980589509010315), ('drone', 0.8965808749198914), ('assault', 0.8937928676605225), ('targets', 0.8834593296051025), ('firearms', 0.8833326101303101), ('weapon', 0.8730441927909851), ('hiv', 0.8625047206878662), 
+('laws', 0.8613511919975281), ('drug', 0.8555658459663391), ('concealed', 0.8548306822776794)]
+```
+
+
+
+Next I updated the search function to increase the pagerank based on how similar the webpage url is to the --search_query. Adjusting --sumts_weight changes the results. 
 
 Take a look;
 
+```
+ python pagerank.py --data=./lawfareblog.csv.gz --search_query='biden' --sumts_weight=.005
+
+INFO:root:rank=0 pagerank=0.5526832938194275 url=www.lawfareblog.com/james-comey-hillary-clinton-and-email-investigation-guide-perplexed
+INFO:root:rank=1 pagerank=0.5518247485160828 url=www.lawfareblog.com/fbi-director-comeys-statement-hillary-clintons-use-private-email-server
+INFO:root:rank=2 pagerank=0.5517845153808594 url=www.lawfareblog.com/lawsuit-filed-against-hillary-clinton
+INFO:root:rank=3 pagerank=0.5517845153808594 url=www.lawfareblog.com/hillary-clinton-encryption-problem-be-solved
+INFO:root:rank=4 pagerank=0.5517845153808594 url=www.lawfareblog.com/hillary-clinton-addresses-iran-deal-brookings
+INFO:root:rank=5 pagerank=0.5517253279685974 url=www.lawfareblog.com/peter-keisler-trumps-promise-jail-hillary-clinton
+INFO:root:rank=6 pagerank=0.5516722798347473 url=www.lawfareblog.com/peter-smiths-search-hillary-clintons-emails-subplot-thickens
+INFO:root:rank=7 pagerank=0.19047796726226807 url=www.lawfareblog.com/hillarys-email
+INFO:root:rank=8 pagerank=0.19047796726226807 url=www.lawfareblog.com/rational-security-hillary-and-hellfire-edition
+INFO:root:rank=9 pagerank=0.17052996158599854 url=www.lawfareblog.com/charlie-savage-romney-team-memo-interrogation
+INFO:root:rank=10 pagerank=0.17042067646980286 url=www.lawfareblog.com/would-president-romney-bring-back-enhanced-interrogation
+```
+
+```
+python pagerank.py --data=./lawfareblog.csv.gz --search_query='biden' --sumts_weight=.5
+
+INFO:root:rank=0 pagerank=0.5526832938194275 url=www.lawfareblog.com/james-comey-hillary-clinton-and-email-investigation-guide-perplexed
+INFO:root:rank=1 pagerank=0.5518247485160828 url=www.lawfareblog.com/fbi-director-comeys-statement-hillary-clintons-use-private-email-server
+INFO:root:rank=2 pagerank=0.5517845153808594 url=www.lawfareblog.com/lawsuit-filed-against-hillary-clinton
+INFO:root:rank=3 pagerank=0.5517845153808594 url=www.lawfareblog.com/hillary-clinton-encryption-problem-be-solved
+INFO:root:rank=4 pagerank=0.5517845153808594 url=www.lawfareblog.com/hillary-clinton-addresses-iran-deal-brookings
+INFO:root:rank=5 pagerank=0.5517253279685974 url=www.lawfareblog.com/peter-keisler-trumps-promise-jail-hillary-clinton
+INFO:root:rank=6 pagerank=0.5516722798347473 url=www.lawfareblog.com/peter-smiths-search-hillary-clintons-emails-subplot-thickens
+INFO:root:rank=7 pagerank=0.500001072883606 url=www.lawfareblog.com/trump-encourages-china-investigate-biden-family-clouding-trade-talks
+INFO:root:rank=8 pagerank=0.5 url=www.lawfareblog.com/live-brookings-host-vice-president-joe-biden
+INFO:root:rank=9 pagerank=0.5 url=www.lawfareblog.com/new-obama-biden-campaign-bumper-sticker
+INFO:root:rank=10 pagerank=0.19047796726226807 url=www.lawfareblog.com/hillarys-email
+```
 
 
 
-Comment out line 188, change line to "url_satisfies_query_notsim(url,query):" and you'll get the results below. 
 
 
-For example;
+Here are all the tasks I have had this program run prior to 12/6/2020: 
+They do not have the hyperparameter options, but are helpful to look at. 
+
+To implement this version comment out line 188, change line 209 to "url_satisfies_query_notsim(url,query):" -- you'll get the results below. 
+
 
 ```
 $ pagerank.py --data=./lawfareblog.csv.gz --filter_ratio=0.2 --personalization_vector_query='corona' --search_query='-corona'
@@ -31,7 +101,11 @@ rank=7 pagerank=6.8115e-02 url=www.lawfareblog.com/chinatalk-dispatches-shanghai
 rank=8 pagerank=6.4847e-02 url=www.lawfareblog.com/us-moves-dismiss-case-against-company-t-company-linked-ira-troll-farm
 rank=9 pagerank=6.4847e-02 url=www.lawfareblog.com/livestream-house-armed-services-holds-ces-holds-hearing-national-security-challenges-north-and-south-america
 ```
-Here are all the tasks I have had this program run so far: 
+
+```
+
+```
+
 ```
 pagerank.py --data=./small_now.csv.gz --verbose
 
